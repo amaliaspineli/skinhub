@@ -1,59 +1,71 @@
-# Skinhub
+# SkinHub
+Aplicação desenvolvida com Angular 17 no frontend e Node.js + Express no backend, com renderização do frontend via SSR (Server-Side Rendering) para melhor performance, SEO e distribuição no Firebase Hosting + Cloud Functions.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.8.
+## Como rodar o projeto localmente
+### Requisitos
+- Node.js 20+
+- npm 9+
+- Angular CLI instalado globalmente:
+```bash
+npm install -g @angular/cli
+```
 
-## Development server
+## Rodando o Frontend (Angular 17)
+Instalar dependências
+```bash
+cd skinhub
+npm install
+```
 
-To start a local development server, run:
-
+Rodar a aplicação no modo desenvolvedor
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Acesse:
+➡️ http://localhost:4200
 
-## Code scaffolding
+## Rodando o Backend (Node.js + Express)
+Dentro da pasta /functions:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+Instalar dependências
 ```bash
-ng generate component component-name
+cd functions
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+Rodar localmente
 ```bash
-ng generate --help
+npm run serve
 ```
 
-## Building
-
-To build the project run:
-
+Ou se estiver usando Firebase Tools:
 ```bash
-ng build
+firebase emulators:start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+A API rodará em algo como:
+➡️ http://localhost:5001
 
-## Running unit tests
+## Tecnologias utilizadas
+Frontend – Angular 17
+- Angular 17 com:
+    - Standalone Components
+    - SSR (Server-Side Rendering)
+    - Prerendering parcial
+    - Angular Router
+    - HttpClient
+- SCSS
+- TypeScript
+- RxJS
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Backend – Node.js
+- Node.js 20
+- Express 4
+- Firebase Functions v2
+- Firebase Admin SDK
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Infraestrutura
+- Firebase Hosting
+- Firebase Cloud Functions (para SSR)
+- Firebase Emulators (desenvolvimento local)
