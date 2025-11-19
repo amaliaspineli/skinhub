@@ -1,0 +1,12 @@
+{
+    "name": "ssr",
+    "private": true,
+    "engines": {
+        "node": "20"
+    },
+    "dependencies": {
+        "express": "^5.1.0",
+        "firebase-admin": "^12.0.0",
+        "firebase-functions": "^4.4.1"
+    }
+}

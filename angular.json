@@ -27,7 +27,11 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
@@ -69,7 +73,11 @@
               "buildTarget": "skinhub:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "liveReload": true,
+            "open": true
+          }
         },
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"
@@ -92,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "44f4043e-db86-40fe-ba0f-57fcedda203b"
   }
 }

@@ -1,0 +1,93 @@
+<!-- Filtros -->
+<div class="filters card shadow-sm mb-4 p-3">
+  <div class="row g-3 align-items-end">
+    <div class="col-md-3">
+      <label class="form-label">Nome</label>
+      <input type="text" class="form-control custom-input" [(ngModel)]="searchName" (input)="applyFilters()"
+        placeholder="Buscar por nome...">
+    </div>
+
+    <div class="col-md-2">
+      <label class="form-label">Tipo</label>
+      <select class="form-select custom-input" [(ngModel)]="type" (change)="applyFilters()">
+        <option value="">Todos</option>
+        <option value="outfit">Outfit</option>
+        <option value="backpack">Backpack</option>
+        <option value="emote">Emote</option>
+        <option value="pickaxe">Pickaxe</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="form-label">Raridade</label>
+      <select class="form-select custom-input" [(ngModel)]="rarity" (change)="applyFilters()">
+        <option value="">Todas</option>
+        <option value="uncommon">Uncommon</option>
+        <option value="rare">Rare</option>
+        <option value="epic">Epic</option>
+        <option value="legendary">Legendary</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="form-label">Data inicial</label>
+      <input type="date" class="form-control custom-input" [(ngModel)]="startDate" (change)="applyFilters()">
+    </div>
+
+    <div class="col-md-2">
+      <label class="form-label">Data final</label>
+      <input type="date" class="form-control custom-input" [(ngModel)]="endDate" (change)="applyFilters()">
+    </div>
+
+    <div class="col-md-1 text-end">
+      <button class="btn btn-outline-secondary reset-btn" (click)="resetFilters()">Limpar</button>
+    </div>
+  </div>
+
+  <div class="d-flex gap-3 mt-3 options">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="onlyNew" (change)="applyFilters()"> Apenas novos
+    </label>
+
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="onlyShop" (change)="applyFilters()"> À venda
+    </label>
+
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="onlyDiscount" (change)="applyFilters()"> Em promoção
+    </label>
+  </div>
+</div>
+
+<!-- Loading -->
+@if (loading) {
+<div class="text-center my-5">
+  <div class="spinner-border text-primary" role="status"></div>
+  <p>Carregando...</p>
+</div>
+}
+
+<!-- Grid -->
+<div class="cosmetic-grid">
+  <div class="cosmetic-card" *ngFor="let cosmetic of cosmetics" [routerLink]="['/cosmetic', cosmetic.id]">
+    @if (cosmetic.images?.icon) {
+    <img [src]="cosmetic.images.icon" class="card-img" [alt]="cosmetic.name" />
+    }
+    <div class="cosmetic-info">
+      <h6>{{ cosmetic.name }}</h6>
+    </div>
+  </div>
+</div>
+
+<!-- Paginação -->
+@if (filteredCosmetics.length > 0) {
+<div class="pagination-container">
+  <button class="btn btn-outline-primary mx-2" [disabled]="page === 1" (click)="prevPage()">
+    <span class="material-icons">chevron_left</span> Anterior
+  </button>
+  <span>Página {{ page }} de {{ totalPages }}</span>
+  <button class="btn btn-outline-primary mx-2" [disabled]="page === totalPages" (click)="nextPage()">
+    Próxima <span class="material-icons">chevron_right</span>
+  </button>
+</div>
+}

@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "public": "dist/skinhub/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "ssr"
+      }
+    ]
+  },
+  "functions": {
+    "source": "functions"
+  }
+}
